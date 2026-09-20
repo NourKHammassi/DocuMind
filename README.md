@@ -1,3 +1,5 @@
+> Work in progress — v1 live locally. Auth, database, and deployment coming soon.
+
 # DocuMind
 
 AI-powered document assistant. Upload a PDF, get an instant summary, 
