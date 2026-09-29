@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from datetime import datetime
-from typing import Optional, List
+from typing import Optional
 
 
 class RegisterRequest(BaseModel):
@@ -14,44 +14,48 @@ class LoginRequest(BaseModel):
     password: str
 
 
+class TokenResponse(BaseModel):
+    access_token: str
+    token_type: str
+    user: dict
+
+
 class UserOut(BaseModel):
-    model_config = {"from_attributes": True}
     id: str
     email: str
     name: str
-    created_at: datetime
+    class Config:
+        from_attributes = True
 
 
-class TokenResponse(BaseModel):
-    access_token: str
-    token_type: str = "bearer"
-    user: UserOut
+class DocumentResponse(BaseModel):
+    id: str
+    filename: str
+    page_count: Optional[int] = 0
+    word_count: Optional[int] = 0
+    created_at: Optional[datetime] = None
+    class Config:
+        from_attributes = True
 
 
 class QuestionRequest(BaseModel):
     question: str
+    model: Optional[str] = "gemini-3.5-flash-lite"
 
 
-class ConversationOut(BaseModel):
-    model_config = {"from_attributes": True}
+class AnswerResponse(BaseModel):
+    answer: str
+    model: str
+
+
+class SummaryResponse(BaseModel):
+    summary: str
+
+
+class ConversationResponse(BaseModel):
     id: str
-    role: str
-    content: str
-    created_at: datetime
-
-
-class DocumentOut(BaseModel):
-    model_config = {"from_attributes": True}
-    id: str
-    filename: str
-    pages: Optional[int] = None
-    word_count: Optional[int] = None
-    read_time: Optional[int] = None
-    created_at: datetime
-
-
-# Force-build all models
-UserOut.model_rebuild()
-TokenResponse.model_rebuild()
-DocumentOut.model_rebuild()
-ConversationOut.model_rebuild()
+    question: str
+    answer: str
+    created_at: Optional[datetime] = None
+    class Config:
+        from_attributes = True
