@@ -21,7 +21,7 @@ export async function apiFetch(path: string, options: RequestInit = {}) {
   return res.json();
 }
 
-export async function register(email: string, password: string, name: string) {
+export async function register(name: string, email: string, password: string) {
   return apiFetch("/auth/register", {
     method: "POST",
     body: JSON.stringify({ email, password, name }),
