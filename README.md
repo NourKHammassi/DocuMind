@@ -139,4 +139,5 @@ App runs at `http://localhost:5173`, API at `http://localhost:8000`.
 
 ## Status
 
-v1 working locally. Deployment (Railway + Vercel) coming next.
+**Live demo:** https://docu-mind-tau-two.vercel.app
+Backend: Railway · Frontend: Vercel · DB: Neon (PostgreSQL + pgvector)
