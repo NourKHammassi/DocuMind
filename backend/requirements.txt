@@ -12,3 +12,4 @@ fastembed
 alembic
 pydantic
 python-dotenv
+PyPDF2
