@@ -11,3 +11,4 @@ pgvector
 fastembed
 alembic
 pydantic
+python-dotenv
